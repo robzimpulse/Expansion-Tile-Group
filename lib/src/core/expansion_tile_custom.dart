@@ -180,14 +180,14 @@ class ExpansionTileCustom extends StatefulWidget {
   ///
   /// See also:
   ///
-  /// * [ExpansionTileTheme.of], which returns the nearest [ExpansionTileTheme]'s
+  /// * [ExpansionTileTheme.], which returns the nearest [ExpansionTileTheme]'s
   ///   [ExpansionTileThemeData].
   final EdgeInsetsGeometry? tilePadding;
 
-  /// Specifies the alignment of [children], which are arranged in a column when
+  /// Specifies the alignment  [children], which are arranged in a column when
   /// the tile is expanded.
   ///
-  /// The internals of the expanded tile make use of a [Column] widget for
+  /// The internals  the expanded tile make use of a [Column] widget for
   /// [children], and [Align] widget to align the column. The `expandedAlignment`
   /// parameter is passed directly into the [Align].
   ///
@@ -397,7 +397,7 @@ class ExpansionTileCustomState extends State<ExpansionTileCustom>
         _controller.drive(_backgroundColorTween.chain(_easeOutTween));
 
     if (widget.isEnableExpanded) {
-      _isExpanded = PageStorage.of(context).readState(context) ??
+      _isExpanded = PageStorage.of(context)?.readState(context) ??
           widget.initiallyExpanded;
     }
 
@@ -442,7 +442,7 @@ class ExpansionTileCustomState extends State<ExpansionTileCustom>
             });
           });
         }
-        PageStorage.of(context).writeState(context, _isExpanded);
+        PageStorage.of(context)?.writeState(context, _isExpanded);
       });
       if (widget.onExpansionChanged != null) {
         widget.onExpansionChanged!(_isExpanded);
@@ -466,7 +466,7 @@ class ExpansionTileCustomState extends State<ExpansionTileCustom>
           });
         });
       }
-      PageStorage.of(context).writeState(context, _isExpanded);
+      PageStorage.of(context)?.writeState(context, _isExpanded);
     });
     widget.onExpansionChanged?.call(_isExpanded);
   }
